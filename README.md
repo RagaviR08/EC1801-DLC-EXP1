@@ -21,15 +21,54 @@ exp1_boolean_min.vcd	VCD waveform dump generated during simulation
 
 ## Verilog Program
 
+```
 
+module boolean_function (
+    input A, B, C, D,
+    output F
+);
+
+assign F = (~B & ~D) | (B & D);
+
+endmodule
+
+```
 
 ## TestBench Program
+```
 
+`timescale 1ns/1ps
 
+module tb_boolean_function;
 
+reg A, B, C, D;
+wire F;
 
+boolean_function uut (
+    .A(A),
+    .B(B),
+    .C(C),
+    .D(D),
+    .F(F)
+);
 
+initial begin
+    $monitor("Time=%0t | A=%b B=%b C=%b D=%b | F=%b",
+             $time, A, B, C, D, F);
 
+    {A, B, C, D} = 4'b0000;
+
+    repeat (16) begin
+        #10;
+        {A, B, C, D} = {A, B, C, D} + 1'b1;
+    end
+
+    #10;
+    $finish;
+end
+
+endmodule
+```
 
     
 ## Truth Table
@@ -85,6 +124,7 @@ and successfully implemented using Verilog HDL.
 
 ## OUTPUT
 
+<img width="1915" height="1015" alt="Screenshot 2026-10-22 224012" src="https://github.com/user-attachments/assets/b80413e3-78ef-4bda-b06e-9a2fc2c7a01c" />
 
 
 The design was compiled and simulated using Synopsys VCS, and the functionality was verified using DVE waveform analysis.
