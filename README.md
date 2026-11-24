@@ -117,6 +117,8 @@ o	F
 The waveform should agree with the truth table.
  
 ### Expected Result
+<img width="1917" height="1077" alt="Screenshot 2026-11-01 220040" src="https://github.com/user-attachments/assets/f58d6075-f156-4ff0-a723-4112ec62cfed" />
+
 The Boolean function
 F(A,B,C,D)=Σm(0,2,5,7,8,10,13,15), which simplifies to F=B'D'+BD.
 was minimized to F=B'D'+BD.
